@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poemas de Amor</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f9f9f9;
+            background-color: black;
+        }
+
+        .heart-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .heart {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+            transform: rotate(-45deg);
+            animation: heartbeat 1s infinite alternate;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart::before {
+            top: -50px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 50px;
+        }
+
+        .poem-container {
+            text-align: center;
+        }
+
+        #poem {
+            font-size: 18px;
+            font-style: italic;
+            color: #605f5f;
+        }
+
+        @keyframes heartbeat {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heartbeat {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heart-container text-center">
+            <div id="heart" class="heart"></div>
+        </div>
+        <div class="poem-container">
+            <p id="poem"></p>
+            <p><i class='fas fa-heart text-white'></i></p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        const poems = [
+            "Eres mi bucle infinito, mi ciclo constante.",
+            "Tus ojos brillan más que un millón de líneas de código.",
+            "Tu amor es como un script bien escrito, siempre funciona sin errores.",
+            "Juntos somos como un gran programa, siempre funcionando en armonía.",
+            "Eres mi código secreto, siempre listo para descifrarte.",
+            "Tu piel es como el lenguaje binario, lleno de ceros y unos que me vuelven loco.",
+            "Nuestro amor es como un virus, infecta mi mente y mi corazón.",
+            "Tus susurros son como comandos ocultos, activan mis sentidos más profundos.",
+            "Explorarte es como un bucle infinito, siempre descubriendo nuevas formas de placer.",
+            "Nuestro amor es como un algoritmo eficiente, siempre encuentra la mejor solución.",
+            "Tu sonrisa es mi función favorita, siempre devuelve la alegría.",
+            "Nuestro amor es como una variable global, siempre presente en cada rincón del código.",
+            "Tus besos son el mejor debug para mis errores.",
+            "En tu abrazo encuentro mi punto de retorno, siempre quiero volver a ti.",
+            "Como un loop infinito, nuestro amor nunca termina.",
+            "Nuestro deseo es como un programa en ejecución, nunca se detiene.",
+            "Tus caricias son como un algoritmo, siempre encontrando el camino a la pasión.",
+            "Enredados como código en bucles anidados, nos perdemos en el éxtasis.",
+            "Tus besos son como funciones recursivas, siempre quiero más y más.",
+            "Nuestra conexión es como una conexión segura, cifrada y llena de pasión."
+        ];
+
+        const poemElement = document.getElementById("poem");
+        const heartElement = document.getElementById("heart");
+
+        function displayRandomPoem() {
+            const randomIndex = Math.floor(Math.random() * poems.length);
+            poemElement.textContent = poems[randomIndex];
+            const colors = ["red", "blue", "green", "purple", "pink", "orange"]; // Lista de colores
+            const randomColor = colors[Math.floor(Math.random() * colors.length)]; // Selecciona un color aleatorio
+            heartElement.style.backgroundColor = randomColor; // Aplica el color al corazón
+        }
+
+        // Mostrar un poema al cargar la página
+        displayRandomPoem();
+
+        // Actualizar el poema y el color del corazón cada 5 segundos
+        setInterval(displayRandomPoem, 5000);
+    </script>
+</body>
+</html>
